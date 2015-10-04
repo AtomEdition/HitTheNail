@@ -1,8 +1,6 @@
 package com.example.myapp.model;
 
-/**
- * Created by Ì on 02.10.2015.
- */
+
 public class Nail {
 
     private boolean pressed;
@@ -12,7 +10,6 @@ public class Nail {
     }
 
     public void changeState(){
-
         this.pressed = !this.pressed;
     }
 

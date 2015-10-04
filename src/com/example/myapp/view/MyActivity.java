@@ -1,88 +1,115 @@
 package com.example.myapp.view;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.*;
 import com.example.myapp.R;
+import com.example.myapp.service.NailFieldService;
 
-import java.util.Random;
 
 public class MyActivity extends Activity implements View.OnClickListener {
     /**
      * Called when the activity is first created.
      */
 
-    TableLayout tableLayout;
-    private static final int GF = 3;
-    ToggleButton[][] toggleButtons = new ToggleButton[GF][GF];
-    private int number;
+    private ImageButton[][] imageButtons;
+
+    private NailFieldService nailFieldService = NailFieldService.getInstance();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
-        tableLayout = (TableLayout)findViewById(R.id.main_table);
+        getNailFieldService().generateNailField(3, 3);
+        createField();
 
-        for (int i = 0; i<GF; i++){
-            TableRow tableRow = new TableRow(this);  //создаем строки таблицы
-            tableRow.setId(i);
-                for (int j = 0; j<GF; j++){ //помещаем в них кнопки
-                    ToggleButton toggleButton = new ToggleButton(this);
-                    toggleButton.setOnClickListener(this);
-                    toggleButton.setId(j);
-                    toggleButton.setTextOn("");
-                    toggleButton.setTextOff("");
-                    toggleButton.setChecked(new Random().nextBoolean());
-
-                        if (!toggleButton.isChecked()){ //установка состояния
-                            // и бэкграунда
-                           toggleButton.setClickable(false);
-                           toggleButton.setBackground(getDrawable(R.drawable.hitnail));
-                        } else toggleButton.setBackground(getDrawable(R.drawable.unhitnail1));
-
-                    toggleButtons[i][j]=toggleButton;
-                    tableRow.setPadding(0, 10, 0, 10);
-                    tableRow.addView(toggleButton, 70, 70);
-                }
-                tableLayout.addView(tableRow);
-        }
-
-        for (int i = 0; i<GF; i++) { //рандомно убираем по элементу из строки
-            int rand = (int)(Math.random()*GF);
-            toggleButtons[i][rand].setVisibility(View.INVISIBLE);
-            toggleButtons[i][rand].setChecked(false);
-            toggleButtons[i][rand].setClickable(false);
-        }
+//        for (int i = 0; i < GF; i++) { //рандомно убираем по элементу из строки
+//            int rand = (int) (Math.random() * GF);
+//            imageButtons[i][rand].setVisibility(View.INVISIBLE);
+//            imageButtons[i][rand].setChecked(false);
+//            imageButtons[i][rand].setClickable(false);
+//        }
     }
 
+    private void  createField() {
+
+        TableLayout tableLayout = (TableLayout)findViewById(R.id.main_table);
+
+        int rows = getNailFieldService().getNailField().getTableWidth();
+        int columns = getNailFieldService().getNailField().getTableHeight();
+
+        setImageButtons(new ImageButton[rows][columns]);
+
+        for (int i = 0; i < rows; i++) {
+
+            TableRow tableRow = new TableRow(this);
+            tableRow.setId(i);
+
+            for (int j = 0; j < columns; j++) {
+
+                ImageButton imageButton = new ImageButton(this);
+                imageButton.setOnClickListener(this);
+                imageButton.setId(j);
+
+                if (!getNailFieldService().getNailField().getField()[i][j].isPressed()) {
+
+                    imageButton.setClickable(true);
+                    imageButton.setBackground(getDrawable(R.drawable.unhitnail1));
+
+                } else {
+
+                    imageButton.setClickable(false);
+                    imageButton.setBackground(getDrawable(R.drawable.hitnail));
+                }
+                getImageButtons()[i][j] = imageButton;
+                tableRow.setPadding(0, 10, 0, 10);
+                tableRow.addView(imageButton, 70, 70);
+            }
+            tableLayout.addView(tableRow);
+        }
+    }
 
     @Override
     public void onClick(View view) {
-        int rowId =((TableRow)view.getParent()).getId();
-        int tbId = ((ToggleButton)view).getId();
 
-        for (int i = 0; i<GF; i++) {
-            int zero = GF;
-            checker(i, tbId);
-            checker(rowId, i);
+        int rowId = ((TableRow) view.getParent()).getId();
+        int columnId = ((ImageButton) view).getId();
+
+        getNailFieldService().changeFieldState(rowId, columnId);
+        drawField();
+    }
+
+    private void drawField() {
+
+        int height = getNailFieldService().getNailField().getTableHeight();
+        int width = getNailFieldService().getNailField().getTableWidth();
+
+        for (int i = 0; i < height; i++) {
+
+            for (int j = 0; j < width; j++) {
+
+                getImageButtons()[i][j].setBackground(getNailFieldService().getNailField().getField()[i][j].isPressed() ?
+                        getDrawable(R.drawable.hitnail) : getDrawable(R.drawable.unhitnail1));
+                getImageButtons()[i][j].setClickable(!getNailFieldService().getNailField().getField()[i][j].isPressed());
+            }
         }
     }
 
-    public void checker(int a, int b){ // при клике по элементу меняем
-        // состояние элементов в соотв. сроке и столбце на противоположное
-        if (toggleButtons[a][b].getVisibility()!=View.INVISIBLE){
-            toggleButtons[a][b].setChecked(!toggleButtons[a][b].isChecked());
-            if (toggleButtons[a][b].isChecked()){
-                toggleButtons[a][b].setClickable(true);
-                toggleButtons[a][b].setBackground(getDrawable(R.drawable.unhitnail1));
-            } else{
-               toggleButtons[a][b].setClickable(false);
-               toggleButtons[a][b].setBackground(getDrawable(R.drawable.hitnail));
-            }
-        }
+    public ImageButton[][] getImageButtons() {
+        return imageButtons;
+    }
+
+    public void setImageButtons(ImageButton[][] imageButtons) {
+        this.imageButtons = imageButtons;
+    }
+
+    public NailFieldService getNailFieldService() {
+        return nailFieldService;
+    }
+
+    public void setNailFieldService(NailFieldService nailFieldService) {
+        this.nailFieldService = nailFieldService;
     }
 }

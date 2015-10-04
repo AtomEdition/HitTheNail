@@ -5,40 +5,57 @@ import com.example.myapp.model.NailField;
 
 import java.util.Random;
 
-/**
- * Created by Ì on 02.10.2015.
- */
 public class NailFieldService {
 
-    public NailField getGeneratedNailField(int height, int width) {
+    private NailField nailField;
+    private static NailFieldService instance;
 
-        NailField nailField = new NailField(height, width);
+    public NailFieldService(){
+        this.nailField = new NailField();
+    }
+
+    public static NailFieldService getInstance(){
+        if (instance == null) {
+            instance = new NailFieldService();
+        }
+        return instance;
+    }
+
+    public void generateNailField(int height, int width) {
+
         Random random = new Random();
-        for (Nail[] rows : nailField.getField()) {
 
-            for (Nail nail : rows) {
+        setNailField(new NailField(height, width));
+        int rows = getNailField().getTableHeight();
+        int columns = getNailField().getTableWidth();
 
-                nail = new Nail(random.nextBoolean());
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++){
+                getNailField().getField()[i][j] = new Nail(random.nextBoolean());
             }
         }
+    }
 
+    public NailField changeFieldState(int positionVertical, int positionHorizontal) {
+
+        for (int i = 0; i < getNailField().getTableWidth(); i++) {
+            getNailField().getField()[positionVertical][i].changeState();
+        }
+
+        for (int j = 0; j < getNailField().getTableHeight(); j++) {
+            getNailField().getField()[j][positionHorizontal].changeState();
+        }
+
+        getNailField().getField()[positionVertical][positionHorizontal].changeState();
+
+        return getNailField();
+    }
+
+    public NailField getNailField() {
         return nailField;
     }
 
-    public NailField changeFieldState(NailField nailField, int positionVertical, int positionHorizontal) {
-
-        for (int i = 0; i < nailField.getTableWidth(); i++) {
-
-            nailField.getField()[i][positionHorizontal].changeState();
-        }
-
-        for (int j = 0; j < nailField.getTableHeight(); j++) {
-
-            nailField.getField()[positionVertical][j].changeState();
-        }
-
-        nailField.getField()[positionVertical][positionHorizontal].changeState();
-
-        return nailField;
+    public void setNailField(NailField nailField) {
+        this.nailField = nailField;
     }
 }

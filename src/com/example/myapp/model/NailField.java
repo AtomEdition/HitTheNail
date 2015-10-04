@@ -1,8 +1,6 @@
 package com.example.myapp.model;
 
-/**
- * Created by Ì on 02.10.2015.
- */
+
 public class NailField {
 
     private int tableHeight;
@@ -10,9 +8,15 @@ public class NailField {
 
     private Nail[][] field;
 
+    public NailField() {
+        this.field = new Nail[0][0];
+    }
+
     public NailField(int tableHeight, int tableWidth) {
 
-        this.field = new Nail[tableHeight][tableWidth];
+        this.tableHeight = tableHeight;
+        this.tableWidth = tableWidth;
+        this.field = new Nail[this.tableHeight][this.tableWidth];
     }
 
     public int getTableHeight() {
