@@ -17,6 +17,8 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
     private NailFieldService nailFieldService = NailFieldService.getInstance();
 
+    private int random;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +27,6 @@ public class MyActivity extends Activity implements View.OnClickListener {
         getNailFieldService().generateNailField(3, 3);
         createField();
 
-//        for (int i = 0; i < GF; i++) { //рандомно убираем по элементу из строки
-//            int rand = (int) (Math.random() * GF);
-//            imageButtons[i][rand].setVisibility(View.INVISIBLE);
-//            imageButtons[i][rand].setChecked(false);
-//            imageButtons[i][rand].setClickable(false);
-//        }
     }
 
     private void  createField() {
@@ -56,17 +52,23 @@ public class MyActivity extends Activity implements View.OnClickListener {
                 if (!getNailFieldService().getNailField().getField()[i][j].isPressed()) {
 
                     imageButton.setClickable(true);
-                    imageButton.setBackground(getDrawable(R.drawable.unhitnail1));
+                    imageButton.setBackground(getDrawable(R.drawable.unhitnail2));
 
                 } else {
 
                     imageButton.setClickable(false);
-                    imageButton.setBackground(getDrawable(R.drawable.hitnail));
+                    imageButton.setBackground(getDrawable(R.drawable.hitnail2));
                 }
                 getImageButtons()[i][j] = imageButton;
                 tableRow.setPadding(0, 10, 0, 10);
                 tableRow.addView(imageButton, 70, 70);
             }
+
+                //рандомно убираем по элементу из строки
+                random = (int) (Math.random() * 3);
+                imageButtons[i][random].setVisibility(View.INVISIBLE);
+                imageButtons[i][random].setClickable(false);
+
             tableLayout.addView(tableRow);
         }
     }
@@ -90,9 +92,9 @@ public class MyActivity extends Activity implements View.OnClickListener {
 
             for (int j = 0; j < width; j++) {
 
-                getImageButtons()[i][j].setBackground(getNailFieldService().getNailField().getField()[i][j].isPressed() ?
-                        getDrawable(R.drawable.hitnail) : getDrawable(R.drawable.unhitnail1));
-                getImageButtons()[i][j].setClickable(!getNailFieldService().getNailField().getField()[i][j].isPressed());
+                    getImageButtons()[i][j].setBackground(getNailFieldService().getNailField().getField()[i][j].isPressed() ?
+                        getDrawable(R.drawable.hitnail2) : getDrawable(R.drawable.unhitnail2));
+                    getImageButtons()[i][j].setClickable(!getNailFieldService().getNailField().getField()[i][j].isPressed());
             }
         }
     }
