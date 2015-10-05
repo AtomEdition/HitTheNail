@@ -61,7 +61,7 @@ public class MyActivity extends Activity implements View.OnClickListener {
                 }
                 getImageButtons()[i][j] = imageButton;
                 tableRow.setPadding(0, 10, 0, 10);
-                tableRow.addView(imageButton, 70, 70);
+                tableRow.addView(imageButton, 100, 100);
             }
 
                 //рандомно убираем по элементу из строки
