@@ -7,7 +7,7 @@ import android.widget.*;
 import com.example.myapp.R;
 import com.example.myapp.service.NailFieldService;
 
-
+// todo: переписать onclick
 public class MyActivity extends Activity implements View.OnClickListener {
     /**
      * Called when the activity is first created.
