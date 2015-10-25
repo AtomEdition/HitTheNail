@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@drawable/okbg_main" android:nestedScrollingEnabled="false"
+              android:gravity="center">
+
+    <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="center_horizontal">
+        <TableRow
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/Statistics"
+                    android:id="@+id/statText" android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold" android:layout_span="3"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/tablerow1" android:layout_gravity="center_horizontal">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/easyStat"
+                    android:id="@+id/easyText" android:layout_margin="10dp" android:textColor="@color/black"
+                    android:textSize="22dp" android:layout_weight="1"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceLarge" android:text="@string/mediumStat"
+                      android:id="@+id/mediumText" android:layout_margin="10dp" android:textColor="@color/black"
+                      android:textSize="22dp" android:layout_weight="1"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceLarge" android:text="@string/hardStat"
+                      android:id="@+id/hardText" android:layout_margin="10dp" android:textColor="@color/black"
+                      android:textSize="22dp" android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/tablerow2" android:layout_gravity="center_horizontal">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0"
+                    android:id="@+id/easyClickStat" android:layout_gravity="center_horizontal" android:textColor="@color/black"
+                    android:textSize="22dp" android:layout_weight="1"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceLarge" android:text="0"
+                      android:id="@+id/mediumClickStat" android:layout_gravity="center_horizontal" android:textColor="@color/black"
+                      android:textSize="22dp" android:layout_weight="1"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceLarge" android:text="0"
+                      android:id="@+id/hardClickStat" android:layout_gravity="center_horizontal" android:textColor="@color/black"
+                      android:textSize="22dp" android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_marginTop="40dp" android:layout_marginBottom="20dp"
+                android:id="@+id/tablerow3" android:layout_gravity="center_horizontal">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="@string/GameWon"
+                    android:id="@+id/textGameWon" android:layout_span="2" android:layout_gravity="center_horizontal"
+                    android:textColor="@color/black" android:textSize="22dp" android:layout_weight="1"/>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:text="0"
+                    android:id="@+id/gameWonStat" android:textColor="@color/black" android:textSize="22dp"
+                    android:layout_gravity="center_horizontal" android:layout_weight="1"/>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  android:id="@+id/tablerow4" android:layout_gravity="center_horizontal">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceLarge" android:text="@string/totalPlayed"
+                      android:id="@+id/textTotalPlayed" android:layout_span="2" android:layout_gravity="center_horizontal"
+                      android:textColor="@color/black" android:textSize="22dp" android:layout_weight="1"/>
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                      android:textAppearance="?android:attr/textAppearanceLarge" android:text="0" android:id="@+id/totalPlayedStat"
+                      android:textColor="@color/black" android:textSize="22dp" android:layout_gravity="center_horizontal"
+                      android:layout_weight="1"/>
+        </TableRow>
+    </TableLayout>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/BackOnMain"
+            android:id="@+id/backButtonStat" android:layout_gravity="center_horizontal" android:layout_marginTop="50dp"
+            android:background="@drawable/menubutton" android:textSize="20sp" android:textStyle="italic"
+            android:onClick="onBackStatClick"/>
+</LinearLayout>
