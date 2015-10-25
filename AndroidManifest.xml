@@ -3,15 +3,44 @@
           package="com.example.myapp"
           android:versionCode="1"
           android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="22"/>
+    <uses-sdk android:minSdkVersion="8"/>
     <application android:label="@string/app_name"
-                 android:icon="@drawable/ic_launcher">
-        <activity android:name=".view.MyActivity"
-                  android:label="@string/app_name">
+                 android:icon="@drawable/icon"
+                 android:theme="@android:style/Theme.Black.NoTitleBar">
+
+        <activity android:name=".view.StartActivity"
+                  android:screenOrientation="portrait"
+                  android:launchMode="singleTask"
+                  android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".view.GameActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+
+        <activity android:name=".view.LevelChoiceActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+
+        <activity android:name=".view.StatisticsActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+
+        <activity android:name=".view.HowToPlayActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+
     </application>
 </manifest>

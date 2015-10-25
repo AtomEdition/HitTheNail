@@ -3,20 +3,25 @@ package com.example.myapp.model;
 
 public class NailField {
 
+    //todo: сетить высоту и ширину исходя из размеров в GameActivity, получаемых из LevelChoice
     private int tableHeight;
     private int tableWidth;
 
     private Nail[][] field;
+    private Nail[][] tempField;
 
     public NailField() {
-        this.field = new Nail[0][0];
+        setField(new Nail[0][0]);
+        setTempField(new Nail[0][0]);
     }
 
     public NailField(int tableHeight, int tableWidth) {
 
-        this.tableHeight = tableHeight;
-        this.tableWidth = tableWidth;
-        this.field = new Nail[this.tableHeight][this.tableWidth];
+        setTableHeight(tableHeight);
+        setTableWidth(tableWidth);
+
+        setField(new Nail[getTableHeight()][getTableWidth()]);
+        setTempField(new Nail[getTableHeight()][getTableWidth()]);
     }
 
     public int getTableHeight() {
@@ -41,5 +46,13 @@ public class NailField {
 
     public void setField(Nail[][] field) {
         this.field = field;
+    }
+
+    public Nail[][] getTempField() {
+        return tempField;
+    }
+
+    public void setTempField(Nail[][] tempField) {
+        this.tempField = tempField;
     }
 }

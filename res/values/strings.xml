@@ -1,4 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">first try</string>
+    <string name="app_name">Hit The Nail</string>
+    <string name="NewGameButton">New game</string>
+    <string name="GenerateNewGame">Restart</string>
+    <string name="GoToMenu">on Main</string>
+    <string name="ContinueButton">Statistics</string>
+    <string name="easyLevel">Easy</string>
+    <string name="mediumLevel">Medium</string>
+    <string name="hardLevel">Hard</string>
+    <string name="NewGame">New game</string>
+    <string name="Statistics">Best Score</string>
+    <string name="easyStat">EASY</string>
+    <string name="mediumStat">MEDIUM</string>
+    <string name="hardStat">HARD</string>
+    <string name="BackOnMain">Back</string>
+    <string name="AppNameMain">Hit The Nail</string>
+    <string name="GameWon">Game won:</string>
+    <string name="totalPlayed">Total played:</string>
+    <string name="HowToPlay">How to play?</string>
+    <string name="tutorial">How to play</string>
+    <string name="tutorialText">All you need to do is the hit all the nails on the playing field.
+                                \nBut the game has one rule: when you hit the nail, the other nails
+                                in the same row and column change their status at the opposite.
+    </string>
+    <string name="instruction">For example:
+                               \ntry to hit the nails so that only one column and row nails stayed not hammered.</string>
+    <string name="instruction2">Now hit the nail in such position, that all the other in the row and column
+                                also become hammered.</string>
+    <string name="instuction3">That\'s all. You won!</string>
 </resources>

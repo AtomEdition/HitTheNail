@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@drawable/okbg_main" android:gravity="center">
+
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView" android:layout_gravity="center_horizontal" android:src="@drawable/logo"
+            android:adjustViewBounds="true" android:focusable="false"
+            android:contentDescription="logo" android:paddingTop="0dp" android:paddingLeft="30dp" android:paddingRight="30dp"
+            android:paddingBottom="30dp"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/NewGameButton"
+            android:id="@+id/newGameButton"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp" android:background="@drawable/menubutton" android:textSize="20sp"
+            android:textStyle="italic" android:textColor="@color/black" android:onClick="onMainNewGameClick"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ContinueButton"
+            android:id="@+id/statisticsButton" android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:onClick="onStatisticsClick"
+            style="@style/ButtonStyle"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/HowToPlay"
+            android:id="@+id/howToPlayButton" android:layout_gravity="center_horizontal" style="@style/ButtonStyle"
+            android:onClick="onHowToPlayClick"/>
+</LinearLayout>

@@ -4,14 +4,58 @@
              android:layout_height="fill_parent"
              android:id="@+id/main_layout"
              android:orientation="vertical"
-              android:background="@drawable/bg_main">
+              android:background="@drawable/okbg_main" android:gravity="center">
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:id="@+id/gameText" android:layout_gravity="center"
+            android:textColor="@color/black" android:textSize="30sp" android:text="0"/>
     <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="center"
             android:id="@+id/main_table"
-            android:gravity="center_vertical"
-            android:paddingTop="100dp">
+            android:padding="20dp">
+    </TableLayout>
+    <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_gravity="center" android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:id="@+id/row1"
+                >
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/NewGame"
+                    android:id="@+id/buttonNewGame" android:nestedScrollingEnabled="false"
+                    android:onClick="inGameNewGameClick" android:layout_marginBottom="10dp" android:background="@drawable/menubutton"
+                    android:textSize="20sp" android:textStyle="italic" android:textColor="@color/black"
+                    android:layout_weight="1"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:id="@+id/row2"
+                >
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/GenerateNewGame"
+                    android:id="@+id/generateNewGame"
+                    android:onClick="restartClick" android:layout_marginRight="5dp" android:background="@drawable/menubutton"
+                    android:textSize="20sp" android:textStyle="italic" android:textColor="@color/black"
+                    android:layout_weight="1" android:layout_gravity="center_horizontal"/>
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/GoToMenu"
+                    android:id="@+id/goToMenu" android:layout_gravity="center_horizontal" android:onClick="inGameToMainClick"
+                    android:nestedScrollingEnabled="false" android:layout_marginLeft="5dp" android:background="@drawable/menubutton"
+                    android:textSize="20sp" android:textStyle="italic" android:textColor="@color/black"
+                    android:layout_weight="1"/>
+        </TableRow>
     </TableLayout>
 </LinearLayout>
 

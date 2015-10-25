@@ -5,6 +5,8 @@ public class Nail {
 
     private boolean pressed;
 
+    private boolean visibility = true;
+
     public Nail(boolean pressed) {
         this.pressed = pressed;
     }
@@ -20,4 +22,13 @@ public class Nail {
     public void setPressed(boolean pressed) {
         this.pressed = pressed;
     }
+
+    public boolean isVisibility() {
+        return visibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
+
 }

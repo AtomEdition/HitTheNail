@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent" android:background="@drawable/okbg_main">
+
+<LinearLayout
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent" android:background="@drawable/okbg_main" android:gravity="center">
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/tutorial"
+            android:id="@+id/textView" android:layout_gravity="center_horizontal"
+            android:textColor="@color/black" android:textSize="30sp" android:textStyle="bold"
+            android:padding="20sp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/tutorialText"
+            android:id="@+id/textView2" android:textIsSelectable="false"
+            style="@style/TextStyle"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/instruction"
+            android:id="@+id/textView3"
+            style="@style/TextStyle"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2" android:layout_gravity="center_horizontal" android:src="@drawable/tutorial1"
+            android:contentDescription="tutorial" android:layout_marginBottom="20dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/instruction2"
+            android:id="@+id/textView4" style="@style/TextStyle"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView3" android:src="@drawable/tutorial2" android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="@string/instuction3"
+            android:id="@+id/textView5" style="@style/TextStyle" android:paddingBottom="0dp"/>
+    <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView4" android:src="@drawable/tutorial3" android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"/>
+    <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/BackOnMain"
+            android:id="@+id/button" android:layout_gravity="center_horizontal" android:layout_marginBottom="30dp"
+            style="@style/ButtonStyle" android:onClick="toStartFromHowToPlayClick"/>
+
+</LinearLayout>
+
+</ScrollView>
