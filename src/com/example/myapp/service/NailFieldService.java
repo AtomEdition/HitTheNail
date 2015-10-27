@@ -14,7 +14,7 @@ public class NailFieldService {
 
     private static NailFieldService instance;
 
-    public NailFieldService(){
+    private NailFieldService(){
         setNailField(new NailField());
     }
 
@@ -138,6 +138,7 @@ public class NailFieldService {
         if (square==0) return true;
         else return false;
     }
+
 
     public NailField getNailField() {
         return nailField;

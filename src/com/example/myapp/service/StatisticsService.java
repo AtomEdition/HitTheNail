@@ -3,7 +3,7 @@ package com.example.myapp.service;
 import android.content.SharedPreferences;
 import android.widget.TextView;
 
-public abstract class StatisticsService {
+public final class StatisticsService {
 
     public static final String APP_PREF = "statistics";
 
@@ -14,6 +14,7 @@ public abstract class StatisticsService {
     public static final String TOTAL_PLAYED_STAT = "totalPlayedStat";
     public static final String GAME_WON_STAT = "gameWonStat";
 
+    private StatisticsService(){ }
 
     public static void setStat(SharedPreferences stat, SharedPreferences.Editor editor,
                                int clickCount, boolean winStatus, String gameDifficulty){
@@ -23,14 +24,22 @@ public abstract class StatisticsService {
 
                 switch (gameDifficulty){
 
-                    case "easy": editor.putInt(EASY_CLICK_STAT,
-                            clickCount<stat.getInt(EASY_CLICK_STAT, 0)? clickCount: stat.getInt(EASY_CLICK_STAT, 0));
+                    case "easy": if (stat.contains(EASY_CLICK_STAT)){
+                                        editor.putInt(EASY_CLICK_STAT, clickCount<stat.getInt(EASY_CLICK_STAT, 0)?
+                                                clickCount: stat.getInt(EASY_CLICK_STAT, 0));
+                    } else editor.putInt(EASY_CLICK_STAT, clickCount);
                         break;
-                    case "medium": editor.putInt(MEDIUM_CLICK_STAT,
-                            clickCount<stat.getInt(MEDIUM_CLICK_STAT, 0)? clickCount: stat.getInt(MEDIUM_CLICK_STAT, 0));
+
+                    case "medium": if (stat.contains(MEDIUM_CLICK_STAT)){
+                        editor.putInt(MEDIUM_CLICK_STAT, clickCount<stat.getInt(MEDIUM_CLICK_STAT, 0)?
+                                clickCount: stat.getInt(EASY_CLICK_STAT, 0));
+                    } else editor.putInt(MEDIUM_CLICK_STAT, clickCount);
                         break;
-                    case "hard": editor.putInt(HARD_CLICK_STAT,
-                            clickCount<stat.getInt(HARD_CLICK_STAT, 0)? clickCount: stat.getInt(HARD_CLICK_STAT, 0));
+
+                    case "hard": if (stat.contains(HARD_CLICK_STAT)){
+                        editor.putInt(HARD_CLICK_STAT, clickCount<stat.getInt(HARD_CLICK_STAT, 0)?
+                                clickCount: stat.getInt(HARD_CLICK_STAT, 0));
+                    } else editor.putInt(HARD_CLICK_STAT, clickCount);
                         break;
                 }
 
