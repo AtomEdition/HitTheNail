@@ -8,6 +8,9 @@
                  android:icon="@drawable/icon"
                  android:theme="@android:style/Theme.Black.NoTitleBar">
 
+        <meta-data android:name="com.google.android.gms.version"
+                   android:value="@integer/google_play_services_version"/>
+
         <activity android:name=".view.StartActivity"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
@@ -42,5 +45,11 @@
                   android:windowSoftInputMode="stateHidden">
         </activity>
 
+        <activity android:name="com.google.android.gms.ads.AdActivity"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+                  android:id="@+id/mainLayout"/>
+        <activity android:name="com.example.myapp.view.FollowActivity"
+                  android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
+                  android:id="@+id/follow_layout"/>
     </application>
 </manifest>

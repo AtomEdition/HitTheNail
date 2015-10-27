@@ -14,6 +14,8 @@ public final class StatisticsService {
     public static final String TOTAL_PLAYED_STAT = "totalPlayedStat";
     public static final String GAME_WON_STAT = "gameWonStat";
 
+    public static boolean isAdWatched = false;
+
     private StatisticsService(){ }
 
     public static void setStat(SharedPreferences stat, SharedPreferences.Editor editor,

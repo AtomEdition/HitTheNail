@@ -28,4 +28,11 @@
     <string name="instruction2">Now hit the nail in such position, that all the other in the row and column
                                 also become hammered.</string>
     <string name="instuction3">That\'s all. You won!</string>
+
+
+    <!--Follow strings-->
+    <string name="connection_failure">Connection error!</string>
+    <string name="follow">Subscribe, buddy!</string>
+    <string name="follow_button_back">Back</string>
+    <string name="follow_text">More</string>
 </resources>

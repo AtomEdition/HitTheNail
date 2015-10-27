@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--FOLLOW IDS-->
+    <item name="follow_layout" type="id">303</item>
+    <item name="button_follow" type="id">51</item>
+    <item name="button_follow_back" type="id">52</item>
+    <item name="button_follow_facebook" type="id">53</item>
+    <item name="button_follow_vk" type="id">54</item>
+    <item name="button_follow_twitter" type="id">55</item>
+    <item name="button_follow_youtube" type="id">56</item>
+    <item name="button_follow_instagram" type="id">57</item>
+    <item name="button_follow_google_play" type="id">58</item>
+    <!---->
+</resources>
