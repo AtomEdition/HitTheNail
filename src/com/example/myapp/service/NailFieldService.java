@@ -9,8 +9,8 @@ public class NailFieldService {
 
     private NailField nailField;
 
-    int height;
-    int width;
+    private int height;
+    private int width;
 
     private static NailFieldService instance;
 
@@ -78,15 +78,6 @@ public class NailFieldService {
         }
     }
 
-//    private void cloneField(){
-//        getNailField().setTempField(getNailField().getField().clone());
-//        for (int i=0; i<getNailField().getField().length; i++){
-//            getNailField().getTempField()[i]=getNailField().getField()[i].clone();
-//        }
-//
-//
-//    }
-
     public void changeFieldState(int positionVertical, int positionHorizontal) {
 
         for (int i = 0; i < width; i++) {
@@ -135,8 +126,7 @@ public class NailFieldService {
             }
         }
 
-        if (square==0) return true;
-        else return false;
+        return square == 0;
     }
 
 

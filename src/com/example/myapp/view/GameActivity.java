@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.ImageButton;
+import android.widget.TableLayout;
+import android.widget.TableRow;
+import android.widget.TextView;
 import com.example.myapp.R;
 import com.example.myapp.service.NailFieldService;
 import com.example.myapp.service.StatisticsService;
@@ -85,7 +85,6 @@ public class GameActivity extends Activity implements View.OnClickListener {
     private void  createField() {
 
         TableLayout tableLayout = (TableLayout)findViewById(R.id.main_table);
-
         setImageButtons(new ImageButton[height][width]);
 
         for (int i = 0; i < height; i++) {
@@ -100,49 +99,43 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 imageButton.setOnClickListener(this);
                 imageButton.setId(j);
 
-                if (getNailFieldService().getNailField().getField()[i][j].isVisibility()){
-                    if (!getNailFieldService().getNailField().getField()[i][j].isPressed()) {
-
-                        imageButton.setClickable(true);
-                        imageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.okunhitnailshadow));
-
-                    } else {
-                        imageButton.setClickable(false);
-                        imageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.okhitnail));
-                    }
-
-                } else {
-                    imageButtons[i][j].setVisibility(View.INVISIBLE);
-                    imageButtons[i][j].setClickable(false);
-                }
+                imageButton = makeImageButton(i, j, imageButton);
 
                 int displayWidth = getWindowManager().getDefaultDisplay().getWidth();
-                int buttonHW =(int) displayWidth/(width+1);
-
-                if (displayWidth>768){
-                    tableRow.addView(imageButton, buttonHW, buttonHW);
-                }
-
-                else if (displayWidth<=768 && displayWidth>480){
-                    tableRow.addView(imageButton, buttonHW, buttonHW);
-                }
-
-                else {
-                    tableRow.addView(imageButton, buttonHW, buttonHW);
-                }
+                int buttonHW = displayWidth / (width + 1);
+                tableRow.addView(imageButton, buttonHW, buttonHW);
             }
 
             tableLayout.addView(tableRow);
         }
     }
 
+    private ImageButton makeImageButton(int i, int j, ImageButton imageButton) {
+        boolean isVisible = getNailFieldService().getNailField().getField()[i][j].isVisibility();
+        boolean isClickable = !getNailFieldService().getNailField().getField()[i][j].isPressed()
+                && isVisible;
+
+        imageButton.setClickable(isClickable);
+        if (isClickable) {
+
+            imageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.okunhitnailshadow));
+
+        } else if (isVisible) {
+
+            imageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.okhitnail));
+        } else {
+
+            imageButton.setVisibility(View.INVISIBLE);
+        }
+        return imageButton;
+    }
 
     public void onClick(View view) {
 
         player.start();
 
         int rowId = ((TableRow) view.getParent()).getId();
-        int columnId = ((ImageButton) view).getId();
+        int columnId = view.getId();
 
         getNailFieldService().changeFieldState(rowId, columnId);
         drawField();
@@ -164,8 +157,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
 
-                    getImageButtons()[i][j].setBackgroundDrawable(getNailFieldService().getNailField().getField()[i][j].isPressed() ?
-                            getResources().getDrawable(R.drawable.okhitnail) : getResources().getDrawable(R.drawable.okunhitnailshadow));
+                getImageButtons()[i][j].setBackgroundDrawable(getNailFieldService().getNailField().getField()[i][j].isPressed()
+                        ? getResources().getDrawable(R.drawable.okhitnail)
+                        : getResources().getDrawable(R.drawable.okunhitnailshadow));
                     getImageButtons()[i][j].setClickable(!getNailFieldService().getNailField().getField()[i][j].isPressed());
             }
         }
@@ -176,7 +170,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         StatisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
         gameText.setText("0");
         clickCounter = 0;
-        winStatus=false;
+        winStatus = false;
 
         getNailFieldService().changeFieldToFirstGeneration();
         drawField();
@@ -194,7 +188,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(clickCounter>0){
+        if (clickCounter > 0) {
             StatisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
         }
     }
