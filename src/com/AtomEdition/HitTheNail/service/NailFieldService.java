@@ -1,7 +1,7 @@
-package com.example.myapp.service;
+package com.AtomEdition.HitTheNail.service;
 
-import com.example.myapp.model.Nail;
-import com.example.myapp.model.NailField;
+import com.AtomEdition.HitTheNail.model.Nail;
+import com.AtomEdition.HitTheNail.model.NailField;
 
 import java.util.Random;
 

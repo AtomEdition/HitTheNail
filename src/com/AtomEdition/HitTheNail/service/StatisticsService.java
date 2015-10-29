@@ -1,4 +1,4 @@
-package com.example.myapp.service;
+package com.AtomEdition.HitTheNail.service;
 
 import android.content.SharedPreferences;
 import android.widget.TextView;

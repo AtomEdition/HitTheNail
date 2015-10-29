@@ -1,4 +1,4 @@
-package com.example.myapp.view;
+package com.AtomEdition.HitTheNail.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,8 +6,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.example.myapp.R;
-import com.example.myapp.service.StatisticsService;
+import com.AtomEdition.HitTheNail.R;
+import com.AtomEdition.HitTheNail.service.StatisticsService;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;

@@ -1,4 +1,4 @@
-package com.example.myapp.view;
+package com.AtomEdition.HitTheNail.view;
 
 import android.app.Activity;
 import android.content.Context;
@@ -11,9 +11,9 @@ import android.widget.ImageButton;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import com.example.myapp.R;
-import com.example.myapp.service.NailFieldService;
-import com.example.myapp.service.StatisticsService;
+import com.AtomEdition.HitTheNail.R;
+import com.AtomEdition.HitTheNail.service.NailFieldService;
+import com.AtomEdition.HitTheNail.service.StatisticsService;
 
 //todo: добавить рекламу
 

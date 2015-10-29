@@ -1,11 +1,11 @@
-package com.example.myapp.view;
+package com.AtomEdition.HitTheNail.view;
 
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import com.example.myapp.R;
+import com.AtomEdition.HitTheNail.R;
 
 public class LevelChoiceActivity extends Activity {
 
