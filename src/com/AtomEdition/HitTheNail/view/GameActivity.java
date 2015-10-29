@@ -12,12 +12,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import com.AtomEdition.HitTheNail.R;
+import com.AtomEdition.HitTheNail.service.AdService;
 import com.AtomEdition.HitTheNail.service.NailFieldService;
 import com.AtomEdition.HitTheNail.service.StatisticsService;
 
-//todo: добавить рекламу
+//todo: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
-//todo: после релиза - добавить вибрацию, добавить локализацию
+//todo: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 public class GameActivity extends Activity implements View.OnClickListener {
 
@@ -42,12 +43,14 @@ public class GameActivity extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.main);
 
         player = MediaPlayer.create(this, R.raw.hit);
 
         statistics = getSharedPreferences(StatisticsService.APP_PREF, Context.MODE_PRIVATE);
         editor = statistics.edit();
+        editor.commit();
 
         gameText = (TextView)findViewById(R.id.gameText);
 
@@ -59,6 +62,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
         getNailFieldService().generateNailField();
         createField();
 
+        AdService.getInstance(this).displayInterstitial();
     }
 
     protected void choiceLevelResult() {
@@ -203,9 +207,5 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     public NailFieldService getNailFieldService() {
         return nailFieldService;
-    }
-
-    public void setNailFieldService(NailFieldService nailFieldService) {
-        this.nailFieldService = nailFieldService;
     }
 }

@@ -2,23 +2,17 @@ package com.AtomEdition.HitTheNail.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import com.AtomEdition.HitTheNail.R;
-import com.AtomEdition.HitTheNail.service.StatisticsService;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
+import com.AtomEdition.HitTheNail.service.AdService;
 
 public class StartActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        if (!StatisticsService.isAdWatched) {
-            setAd();
-        }
+        AdService.getInstance(this).displayInterstitial();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startmenu);
     }
@@ -47,19 +41,9 @@ public class StartActivity extends Activity {
         AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
         quitDialog.setTitle("Yoy really want to quit?");
 
-        quitDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
+        quitDialog.setPositiveButton("Yes", (dialog, which) -> finish());
 
-        quitDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                return;
-            }
-        });
+        quitDialog.setNegativeButton("No", (dialog, which) -> {});
 
         quitDialog.show();
     }
@@ -68,27 +52,5 @@ public class StartActivity extends Activity {
         Intent intent = new Intent(this, FollowActivity.class);
         startActivity(intent);
         finish();
-    }
-
-    private InterstitialAd interstitialAd;
-
-    public void setAd() {
-        interstitialAd = new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-9550981282535152/8512948227");
-        AdRequest adRequest = new AdRequest.Builder().build();
-        interstitialAd.loadAd(adRequest);
-        interstitialAd.setAdListener(new AdListener() {
-            @Override
-            public void onAdLoaded() {
-                displayInterstitial();
-            }
-        });
-    }
-
-    public void displayInterstitial() {
-        if (!StatisticsService.isAdWatched) {
-            interstitialAd.show();
-            StatisticsService.isAdWatched = true;
-        }
     }
 }
