@@ -45,7 +45,7 @@ public class StartActivity extends Activity {
 
     private void openQuitDialog (){
         AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
-        quitDialog.setTitle("Yoy really want to quit?");
+        quitDialog.setTitle("You really want to quit?");
 
         quitDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
