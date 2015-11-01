@@ -7,18 +7,13 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.*;
 import com.AtomEdition.HitTheNail.R;
 import com.AtomEdition.HitTheNail.service.AdService;
 import com.AtomEdition.HitTheNail.service.NailFieldService;
 import com.AtomEdition.HitTheNail.service.StatisticsService;
 
 //todo: добавить локализацию
-
-//todo: после релиза - добавить вибрацию, добавить локализацию
 
 public class GameActivity extends Activity implements View.OnClickListener {
 

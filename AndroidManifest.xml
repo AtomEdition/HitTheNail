@@ -51,7 +51,7 @@
         <activity android:name="com.google.android.gms.ads.AdActivity"
                   android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
                   android:id="@+id/mainLayout"/>
-        <activity android:name="com.example.myapp.view.FollowActivity"
+        <activity android:name="com.AtomEdition.HitTheNail.view.FollowActivity"
                   android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
                   android:id="@+id/follow_layout"/>
     </application>
