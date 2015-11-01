@@ -12,6 +12,8 @@ public class NailFieldService {
     private int height;
     private int width;
 
+    private Random random = new Random();
+
     private static NailFieldService instance;
 
     private NailFieldService(){
@@ -31,16 +33,31 @@ public class NailFieldService {
         height = getNailField().getTableHeight();
         width = getNailField().getTableWidth();
 
+        int rand;
+
         setNailField(new NailField(height, width));
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++){
                getNailField().getField()[i][j] = new Nail(true);
-               getNailField().getTempField()[i][j] = new Nail(true);
             }
+
+            rand = random.nextInt(width);
+            getNailField().getField()[i][rand].setVisibility(false);
         }
 
-        Random random = new Random();
+        confuseCreatedNailField();
+
+        if (winChecker()) {
+            generateNailField();
+        }
+
+        createTempField();
+
+    }
+
+    private void confuseCreatedNailField() {
+
         int randIntH;
         int randIntW;
 
@@ -50,24 +67,20 @@ public class NailFieldService {
                 randIntH = random.nextInt(height);
                 randIntW = random.nextInt(width);
 
-                if (getNailField().getField()[randIntH][randIntW].isPressed()) {
+                if (getNailField().getField()[randIntH][randIntW].isPressed() &&
+                        getNailField().getField()[randIntH][randIntW].isVisibility()) {
                     changeFieldState(randIntH, randIntW);
                 }
             }
-
-            randIntW = random.nextInt(width);
-
-            getNailField().getField()[i][randIntW].setVisibility(false);
-            getNailField().getField()[i][randIntW].setPressed(true);
         }
+    }
 
-        if(winChecker()){
-            generateNailField();
-        }
+    private void createTempField() {
 
-        //todo:дублирование
-        for (int i=0; i<height; i++){
-            for (int j=0; j<width; j++){
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+
+                getNailField().getTempField()[i][j] = new Nail(true);
 
                 getNailField().getTempField()[i][j].setPressed(getNailField().getField()[i][j].isPressed());
 
@@ -77,6 +90,7 @@ public class NailFieldService {
             }
         }
     }
+
 
     public void changeFieldState(int positionVertical, int positionHorizontal) {
 

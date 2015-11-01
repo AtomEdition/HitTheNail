@@ -9,6 +9,11 @@ import com.example.myapp.R;
 
 public class LevelChoiceActivity extends Activity {
 
+    static final String LEVEL = "level";
+    static final String EASY = "easy";
+    static final String MEDIUM = "medium";
+    static final String HARD = "hard";
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levelchoice);
@@ -20,11 +25,14 @@ public class LevelChoiceActivity extends Activity {
 
             switch (view.getId()){
 
-                case R.id.easy:  intent.putExtra("level", "easy");
+                case R.id.easy:
+                    intent.putExtra(LEVEL, EASY);
                     break;
-                case R.id.medium:  intent.putExtra("level", "medium");
+                case R.id.medium:
+                    intent.putExtra(LEVEL, MEDIUM);
                     break;
-                case R.id.hard:  intent.putExtra("level", "hard");
+                case R.id.hard:
+                    intent.putExtra(LEVEL, HARD);
                     break;
 
                 default: break;
