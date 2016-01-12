@@ -7,18 +7,13 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageButton;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
+import android.widget.*;
 import com.AtomEdition.HitTheNail.R;
 import com.AtomEdition.HitTheNail.service.AdService;
 import com.AtomEdition.HitTheNail.service.NailFieldService;
 import com.AtomEdition.HitTheNail.service.StatisticsService;
 
-//todo: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
-
-//todo: пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ - пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
+//todo: добавить локализацию
 
 public class GameActivity extends Activity implements View.OnClickListener {
 
@@ -27,6 +22,8 @@ public class GameActivity extends Activity implements View.OnClickListener {
     private NailFieldService nailFieldService = NailFieldService.getInstance();
 
     private MediaPlayer player;
+    private ToggleButton sound;
+    private static boolean soundState = false;
 
     private int height;
     private int width;
@@ -47,6 +44,13 @@ public class GameActivity extends Activity implements View.OnClickListener {
         setContentView(R.layout.main);
 
         player = MediaPlayer.create(this, R.raw.hit);
+        player.setVolume(0, 0);
+        sound = (ToggleButton) findViewById(R.id.soundSwitcher);
+        if (soundState) {
+            player.setVolume(1.0f, 1.0f);
+            sound.setChecked(true);
+        }
+
 
         statistics = getSharedPreferences(StatisticsService.APP_PREF, Context.MODE_PRIVATE);
         editor = statistics.edit();
@@ -67,21 +71,27 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
     protected void choiceLevelResult() {
 
-        switch (getIntent().getStringExtra("level")){
+        switch (getIntent().getStringExtra(LevelChoiceActivity.LEVEL)) {
 
-            case "easy": getNailFieldService().getNailField().setTableHeight(3);
+            case LevelChoiceActivity.EASY:
+                getNailFieldService().getNailField().setTableHeight(3);
                 getNailFieldService().getNailField().setTableWidth(3);
                 gameDifficulty = "easy";
                 break;
 
-            case "medium": getNailFieldService().getNailField().setTableHeight(4);
+            case LevelChoiceActivity.MEDIUM:
+                getNailFieldService().getNailField().setTableHeight(4);
                 getNailFieldService().getNailField().setTableWidth(4);
                 gameDifficulty = "medium";
                 break;
 
-            case "hard": getNailFieldService().getNailField().setTableHeight(5);
+            case LevelChoiceActivity.HARD:
+                getNailFieldService().getNailField().setTableHeight(5);
                 getNailFieldService().getNailField().setTableWidth(5);
                 gameDifficulty = "hard";
+                break;
+
+            default:
                 break;
         }
     }
@@ -178,6 +188,16 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
         getNailFieldService().changeFieldToFirstGeneration();
         drawField();
+    }
+    
+    public void soundOffOn(View view) {
+        if (!sound.isChecked()) {
+            player.setVolume(0, 0);
+            soundState = false;
+        } else {
+            player.setVolume(1.0f, 1.0f);
+            soundState = true;
+        }
     }
 
     public void inGameToMainClick(View view){

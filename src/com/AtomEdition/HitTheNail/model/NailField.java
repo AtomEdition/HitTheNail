@@ -20,8 +20,8 @@ public class NailField {
         setTableHeight(tableHeight);
         setTableWidth(tableWidth);
 
-        setField(new Nail[getTableHeight()][getTableWidth()]);
-        setTempField(new Nail[getTableHeight()][getTableWidth()]);
+        setField(new Nail[tableHeight][tableWidth]);
+        setTempField(new Nail[tableHeight][tableWidth]);
     }
 
     public int getTableHeight() {
