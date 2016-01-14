@@ -1,47 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent" android:background="@drawable/okbg_main" android:gravity="center"
-              android:id="@+id/linear_layout">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@drawable/okbg_main"
+                android:id="@+id/relative_layout">
 
-    <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/imageView" android:layout_gravity="center_horizontal" android:src="@drawable/logo"
-            android:adjustViewBounds="true" android:focusable="false"
-            android:contentDescription="logo" android:paddingTop="0dp" android:paddingLeft="30dp" android:paddingRight="30dp"
-            android:paddingBottom="30dp"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/NewGameButton"
-            android:id="@+id/newGameButton"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp" android:background="@drawable/menubutton" android:textSize="20sp"
-            android:textColor="@color/black" android:onClick="onMainNewGameClick"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/ContinueButton"
-            android:id="@+id/statisticsButton" android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="10dp"
-            android:onClick="onStatisticsClick"
-            style="@style/ButtonStyle"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/HowToPlay"
-            android:id="@+id/howToPlayButton" android:layout_gravity="center_horizontal" style="@style/ButtonStyle"
-            android:layout_marginBottom="10dp"
-            android:onClick="onHowToPlayClick"/>
-    <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/follow_text"
-            android:id="@+id/follow" android:layout_gravity="center_horizontal" style="@style/ButtonStyle"
-            android:onClick="onClickOther" android:layout_marginBottom="10dp"/>
-    <Button style="@style/ButtonStyle" android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/Exit" android:id="@+id/ExitButton" android:layout_gravity="center_horizontal"
-            android:onClick="exitClick" android:nestedScrollingEnabled="false"/>
-</LinearLayout>
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:orientation="vertical"
+                  android:gravity="center"
+                  android:id="@+id/linear_layout">
+
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView" android:layout_gravity="center_horizontal" android:src="@drawable/logo"
+                android:adjustViewBounds="true" android:focusable="false"
+                android:contentDescription="logo" android:paddingTop="0dp" android:paddingLeft="30dp" android:paddingRight="30dp"
+                android:paddingBottom="30dp"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/NewGameButton"
+                android:id="@+id/newGameButton"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp" android:background="@drawable/menubutton" android:textSize="20sp"
+                android:textColor="@color/black" android:onClick="onMainNewGameClick"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ContinueButton"
+                android:id="@+id/statisticsButton" android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:onClick="onStatisticsClick"
+                style="@style/ButtonStyle"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/HowToPlay"
+                android:id="@+id/howToPlayButton" android:layout_gravity="center_horizontal" style="@style/ButtonStyle"
+                android:layout_marginBottom="10dp"
+                android:onClick="onHowToPlayClick"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/follow_text"
+                android:id="@+id/follow" android:layout_gravity="center_horizontal" style="@style/ButtonStyle"
+                android:onClick="onClickOther" android:layout_marginBottom="10dp"/>
+        <Button style="@style/ButtonStyle" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="@string/Exit" android:id="@+id/ExitButton" android:layout_gravity="center_horizontal"
+                android:onClick="exitClick" android:nestedScrollingEnabled="false"/>
+    </LinearLayout>
+
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:ads="http://schemas.android.com/apk/res-auto"
+                  android:layout_width="fill_parent"
+                  android:layout_height="fill_parent"
+                  android:orientation="vertical"
+                  android:gravity="top">
+
+        <com.google.android.gms.ads.AdView
+                android:id="@+id/adView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                ads:adSize="SMART_BANNER"
+                ads:adUnitId="ca-app-pub-9550981282535152/5832531026" />
+
+    </LinearLayout>
+
+    <ImageButton android:layout_width="@dimen/promotion_button_size"
+                 android:layout_height="@dimen/promotion_button_size"
+                 android:id="@+id/promotion_button"
+                 android:onClick="onPromotionClick"
+                 android:background="@drawable/promotion_adopt"
+                 android:layout_gravity="left|bottom"
+                 android:layout_marginLeft="@dimen/promotion_button_margin"
+                 android:layout_marginBottom="@dimen/promotion_button_margin"
+                 android:layout_alignParentBottom="true"
+                 android:layout_alignParentLeft="true"/>
+</RelativeLayout>

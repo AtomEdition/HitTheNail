@@ -10,7 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import com.AtomEdition.HitTheNail.R;
 import com.AtomEdition.HitTheNail.service.AdService;
-import com.AtomEdition.HitTheNail.service.PromotionService;
+import com.AtomEdition.HitTheNail.service.promotion.PromotionButtonController;
+import com.AtomEdition.HitTheNail.service.promotion.PromotionService;
 
 public class StartActivity extends Activity {
 
@@ -18,11 +19,23 @@ public class StartActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        AdService.getInstance(this).displayInterstitial();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startmenu);
+        init();
+    }
 
+    private void init(){
+
+        setAd();
         otherAppsScreen = getSharedPreferences(PromotionService.OTHER_APPS_SCREEN, Context.MODE_PRIVATE);
+    }
+
+    private void setAd(){
+
+        AdService adService = AdService.getInstance();
+        adService.setAd(this);
+        adService.showBanner(this);
+        PromotionButtonController.getInstance(this).startTimer();
     }
 
     public void onMainNewGameClick (View view){
@@ -83,5 +96,9 @@ public class StartActivity extends Activity {
         Intent intent = new Intent(this, FollowActivity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void onPromotionClick(View view){
+        PromotionButtonController.getInstance(this).makeUsFamous();
     }
 }
