@@ -2,20 +2,27 @@ package com.AtomEdition.HitTheNail.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import com.AtomEdition.HitTheNail.R;
 import com.AtomEdition.HitTheNail.service.AdService;
+import com.AtomEdition.HitTheNail.service.PromotionService;
 
 public class StartActivity extends Activity {
+
+    private SharedPreferences otherAppsScreen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AdService.getInstance(this).displayInterstitial();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startmenu);
+
+        otherAppsScreen = getSharedPreferences(PromotionService.OTHER_APPS_SCREEN, Context.MODE_PRIVATE);
     }
 
     public void onMainNewGameClick (View view){
@@ -33,9 +40,22 @@ public class StartActivity extends Activity {
         startActivity(intent);
     }
 
+    public void exitClick (View view){
+        onBackPressed();
+    }
+
     @Override
     public void onBackPressed() {
-        openQuitDialog();
+
+        if (PromotionService.getPromotionState(otherAppsScreen)) {
+            openQuitDialog();
+        }
+
+        else {
+            Intent intent = new Intent(this, ExitScreenActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 
     private void openQuitDialog (){

@@ -51,10 +51,8 @@ public class GameActivity extends Activity implements View.OnClickListener {
             sound.setChecked(true);
         }
 
-
         statistics = getSharedPreferences(StatisticsService.APP_PREF, Context.MODE_PRIVATE);
         editor = statistics.edit();
-        editor.commit();
 
         gameText = (TextView)findViewById(R.id.gameText);
 
@@ -159,7 +157,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
         if (getNailFieldService().winChecker()){
 
             winStatus = true;
-            gameText.setText("You Won!" + " In " + Integer.toString(clickCounter) + " click.");
+            String text = getString(R.string.wonText);
+            //gameText.setText("You Won!" + " In " + Integer.toString(clickCounter) + " click.");
+            gameText.setText(String.format(text, clickCounter));
         } else {
 
             gameText.setText(Integer.toString(clickCounter));

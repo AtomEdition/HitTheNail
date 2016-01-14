@@ -19,6 +19,8 @@
     <string name="totalPlayed">Total played:</string>
     <string name="HowToPlay">How to play?</string>
     <string name="tutorial">How to play</string>
+    <string name="levelChoice">Game difficulty</string>
+    <string name="wonText">You won! In %1$s click(s).</string>
     <string name="tutorialText">All you need to do is the hit all the nails on the playing field.
                                 \nBut the game has one rule: when you hit the nail, the other nails
                                 in the same row and column change their status at the opposite.
@@ -27,7 +29,7 @@
                                \ntry to hit the nails so that only one column and row nails stayed not hammered.</string>
     <string name="instruction2">Now hit the nail in such position, that all the other in the row and column
                                 also become hammered.</string>
-    <string name="instuction3">That\'s all. You won!</string>
+    <string name="instruction3">That\'s all. You won!</string>
 
 
     <!--Follow strings-->
@@ -35,4 +37,9 @@
     <string name="follow">Subscribe, buddy!</string>
     <string name="follow_button_back">Back</string>
     <string name="follow_text">More</string>
+    <string name="TryOther">Try our other apps</string>
+    <string name="Exit">Exit</string>
+    <string name="ExitMessage">Don\'t show me this message again</string>
+    <string name="Close">Close</string>
+
 </resources>

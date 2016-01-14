@@ -3,7 +3,7 @@ package com.AtomEdition.HitTheNail.service;
 import android.content.SharedPreferences;
 import android.widget.TextView;
 
-public final class StatisticsService {
+public abstract class StatisticsService {
 
     public static final String APP_PREF = "statistics";
 

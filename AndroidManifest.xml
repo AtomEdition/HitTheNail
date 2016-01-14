@@ -48,6 +48,12 @@
                   android:windowSoftInputMode="stateHidden">
         </activity>
 
+        <activity android:name=".view.ExitScreenActivity"
+                  android:launchMode="singleTask"
+                  android:screenOrientation="portrait"
+                  android:windowSoftInputMode="stateHidden">
+        </activity>
+
         <activity android:name="com.google.android.gms.ads.AdActivity"
                   android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
                   android:id="@+id/mainLayout"/>
