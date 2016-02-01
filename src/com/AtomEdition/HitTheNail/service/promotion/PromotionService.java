@@ -1,9 +1,9 @@
-package com.AtomEdition.HitTheNail.service;
+package com.AtomEdition.HitTheNail.service.promotion;
 
 import android.content.SharedPreferences;
 
 /**
- * Created by Ì on 14.01.2016.
+ * Created by ï¿½ on 14.01.2016.
  */
 public class PromotionService {
 

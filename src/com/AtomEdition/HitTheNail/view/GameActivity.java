@@ -13,7 +13,7 @@ import com.AtomEdition.HitTheNail.service.AdService;
 import com.AtomEdition.HitTheNail.service.NailFieldService;
 import com.AtomEdition.HitTheNail.service.StatisticsService;
 
-//todo: добавить локализацию
+//todo: пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 public class GameActivity extends Activity implements View.OnClickListener {
 
@@ -64,8 +64,6 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
         getNailFieldService().generateNailField();
         createField();
-
-        AdService.getInstance(this).displayInterstitial();
     }
 
     protected void choiceLevelResult() {

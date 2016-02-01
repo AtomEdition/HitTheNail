@@ -15,6 +15,7 @@
                    android:value="@integer/google_play_services_version"/>
 
         <activity android:name=".view.StartActivity"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:screenOrientation="portrait"
                   android:launchMode="singleTask"
                   android:windowSoftInputMode="stateHidden">
@@ -25,24 +26,28 @@
         </activity>
 
         <activity android:name=".view.GameActivity"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="stateHidden">
         </activity>
 
         <activity android:name=".view.LevelChoiceActivity"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="stateHidden">
         </activity>
 
         <activity android:name=".view.StatisticsActivity"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="stateHidden">
         </activity>
 
         <activity android:name=".view.HowToPlayActivity"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:launchMode="singleTask"
                   android:screenOrientation="portrait"
                   android:windowSoftInputMode="stateHidden">

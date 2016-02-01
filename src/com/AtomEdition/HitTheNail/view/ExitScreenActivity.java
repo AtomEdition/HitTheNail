@@ -1,9 +1,7 @@
 package com.AtomEdition.HitTheNail.view;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
@@ -14,13 +12,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.AtomEdition.HitTheNail.R;
-import com.AtomEdition.HitTheNail.service.PromotionService;
-import com.AtomEdition.HitTheNail.service.StatisticsService;
+import com.AtomEdition.HitTheNail.service.promotion.PromotionService;
 
 import java.util.ArrayList;
 
 /**
- * Created by Ì on 12.01.2016.
+ * Created by ï¿½ on 12.01.2016.
  */
 public class ExitScreenActivity extends Activity implements View.OnClickListener {
 
