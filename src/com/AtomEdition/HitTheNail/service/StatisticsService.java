@@ -3,7 +3,19 @@ package com.AtomEdition.HitTheNail.service;
 import android.content.SharedPreferences;
 import android.widget.TextView;
 
-public abstract class StatisticsService {
+public class StatisticsService {
+
+    private StatisticsService() {}
+
+    public static StatisticsService instance;
+
+    public static StatisticsService getInstance() {
+
+        if (instance == null) {
+            instance = new StatisticsService();
+        }
+        return instance;
+    }
 
     public static final String APP_PREF = "statistics";
 
@@ -14,9 +26,7 @@ public abstract class StatisticsService {
     public static final String TOTAL_PLAYED_STAT = "totalPlayedStat";
     public static final String GAME_WON_STAT = "gameWonStat";
 
-    private StatisticsService(){ }
-
-    public static void setStat(SharedPreferences stat, SharedPreferences.Editor editor,
+    public void setStat(SharedPreferences stat, SharedPreferences.Editor editor,
                                int clickCount, boolean winStatus, String gameDifficulty){
             if (winStatus){
 
@@ -50,7 +60,7 @@ public abstract class StatisticsService {
         editor.commit();
     }
 
-    public static void loadStat(SharedPreferences preferences, TextView easy, TextView medium, TextView hard,
+    public void loadStat(SharedPreferences preferences, TextView easy, TextView medium, TextView hard,
                                 TextView wonGame, TextView totalPlayed){
 
         easy.setText(Integer.toString(preferences.getInt(EASY_CLICK_STAT, 0)));

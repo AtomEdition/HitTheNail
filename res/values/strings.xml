@@ -3,7 +3,7 @@
     <string name="app_name">Hit The Nail</string>
     <string name="NewGameButton">New game</string>
     <string name="GenerateNewGame">Restart</string>
-    <string name="GoToMenu">on Main</string>
+    <string name="GoToMenu">On main</string>
     <string name="ContinueButton">Statistics</string>
     <string name="easyLevel">Easy</string>
     <string name="mediumLevel">Medium</string>
@@ -41,5 +41,8 @@
     <string name="Exit">Exit</string>
     <string name="ExitMessage">Don\'t show me this message again</string>
     <string name="Close">Close</string>
+    <string name="QuitDialog">Are you really want to quit?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
 
 </resources>

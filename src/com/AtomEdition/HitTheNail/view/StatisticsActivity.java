@@ -11,14 +11,16 @@ import com.AtomEdition.HitTheNail.service.StatisticsService;
 
 public class StatisticsActivity extends Activity{
 
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
+    private StatisticsService statisticsService = StatisticsService.getInstance();
 
-    TextView easyClickStat;
-    TextView mediumClickStat;
-    TextView hardClickStat;
 
-    TextView gameWonStat;
-    TextView totalPlayedStat;
+    private TextView easyClickStat;
+    private TextView mediumClickStat;
+    private TextView hardClickStat;
+
+    private TextView gameWonStat;
+    private TextView totalPlayedStat;
 
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -33,7 +35,7 @@ public class StatisticsActivity extends Activity{
         gameWonStat = (TextView)findViewById(R.id.gameWonStat);
         totalPlayedStat = (TextView)findViewById(R.id.totalPlayedStat);
 
-        StatisticsService.loadStat(preferences, easyClickStat, mediumClickStat, hardClickStat,
+        statisticsService.loadStat(preferences, easyClickStat, mediumClickStat, hardClickStat,
                                     gameWonStat, totalPlayedStat);
 
     }

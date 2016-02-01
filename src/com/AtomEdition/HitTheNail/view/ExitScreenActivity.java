@@ -9,7 +9,9 @@ import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
 import com.AtomEdition.HitTheNail.R;
 import com.AtomEdition.HitTheNail.service.PromotionService;
@@ -23,7 +25,9 @@ import java.util.ArrayList;
 public class ExitScreenActivity extends Activity implements View.OnClickListener {
 
     private SharedPreferences.Editor editor;
+    private PromotionService promotionService = PromotionService.getInstance();
 
+    private TableLayout tableLayout;
     private CheckBox checkBox;
     private ArrayList<Drawable> images;
     private int counter = 0;
@@ -39,6 +43,8 @@ public class ExitScreenActivity extends Activity implements View.OnClickListener
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exitscreen_layout);
         createImageTable();
+
+        tableLayout = (TableLayout)findViewById(R.id.appsTable);
         checkBox = (CheckBox)findViewById(R.id.MessageCheckBox);
 
         editor = getSharedPreferences(PromotionService.OTHER_APPS_SCREEN, Context.MODE_PRIVATE).edit();
@@ -47,25 +53,28 @@ public class ExitScreenActivity extends Activity implements View.OnClickListener
 
     private void createImageTable () {
 
-        images = new ArrayList<Drawable>();
-
+        images = new ArrayList<>();
+        double screenPercent = 0.6;
         TableLayout tableLayout = (TableLayout)findViewById(R.id.appsTable);
 
-        images.add(getResources().getDrawable(R.drawable.exit_screen_fortune_cookies));
-        images.add(getResources().getDrawable(R.drawable.exit_screen_cat_clicker));
-        images.add(getResources().getDrawable(R.drawable.exit_screen_mommy_balls));
-        images.add(getResources().getDrawable(R.drawable.exit_screen_adopt));
+        images.add(getResources().getDrawable(R.drawable.promotion_fortune_cookies));
+        images.add(getResources().getDrawable(R.drawable.promotion_cat_clicker));
+        images.add(getResources().getDrawable(R.drawable.promotion_mommy_balls));
+        images.add(getResources().getDrawable(R.drawable.promotion_adopt));
 
+        float ratio = (float)images.get(0).getMinimumWidth()/images.get(0).getMinimumHeight();
+        int bannerHeight = (int)(getResources().getDisplayMetrics().heightPixels*screenPercent)/images.size();
+        int bannerWidth = (int)(ratio*bannerHeight);
 
         for (Drawable image : images) {
 
             TableRow tableRow = new TableRow(this);
-            ImageButton button = new ImageButton(this);
-            button.setBackgroundDrawable(image);
-            button.setOnClickListener(this);
-            button.setId(counter);
+            ImageView banner = new ImageView(this);
+            banner.setBackgroundDrawable(image);
+            banner.setOnClickListener(this);
+            banner.setId(counter);
             counter++;
-            tableRow.addView(button);
+            tableRow.addView(banner, bannerWidth, bannerHeight);
             tableLayout.addView(tableRow);
         }
     }
@@ -83,7 +92,7 @@ public class ExitScreenActivity extends Activity implements View.OnClickListener
 
     @Override
     public void onBackPressed() {
-        PromotionService.setPromotionState(editor, checkBox.isChecked());
+        promotionService.setPromotionState(editor, checkBox.isChecked());
         finish();
     }
 

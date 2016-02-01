@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:id="@+id/gameText" android:layout_gravity="center"
-            android:textColor="@color/black" android:textSize="30sp" android:text="0"/>
+            android:textColor="@color/black" android:textSize="20dp" android:text="0"/>
     <TableLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

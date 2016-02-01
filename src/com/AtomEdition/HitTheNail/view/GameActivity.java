@@ -20,6 +20,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
     private ImageButton[][] imageButtons;
 
     private NailFieldService nailFieldService = NailFieldService.getInstance();
+    private StatisticsService statisticsService = StatisticsService.getInstance();
 
     private MediaPlayer player;
     private ToggleButton sound;
@@ -181,7 +182,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
 
     public void restartClick(View view){
-        StatisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
+        statisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
         gameText.setText("0");
         clickCounter = 0;
         winStatus = false;
@@ -213,7 +214,7 @@ public class GameActivity extends Activity implements View.OnClickListener {
     protected void onDestroy() {
         super.onDestroy();
         if (clickCounter > 0) {
-            StatisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
+            statisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
         }
     }
 

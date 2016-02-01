@@ -14,6 +14,7 @@ import com.AtomEdition.HitTheNail.service.PromotionService;
 
 public class StartActivity extends Activity {
 
+    private PromotionService promotionService = PromotionService.getInstance();
     private SharedPreferences otherAppsScreen;
 
     @Override
@@ -21,8 +22,8 @@ public class StartActivity extends Activity {
         AdService.getInstance(this).displayInterstitial();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.startmenu);
-
         otherAppsScreen = getSharedPreferences(PromotionService.OTHER_APPS_SCREEN, Context.MODE_PRIVATE);
+        otherAppsScreen.edit().clear().commit();
     }
 
     public void onMainNewGameClick (View view){
@@ -40,14 +41,10 @@ public class StartActivity extends Activity {
         startActivity(intent);
     }
 
-    public void exitClick (View view){
-        onBackPressed();
-    }
-
     @Override
     public void onBackPressed() {
 
-        if (PromotionService.getPromotionState(otherAppsScreen)) {
+        if (promotionService.getPromotionState(otherAppsScreen)) {
             openQuitDialog();
         }
 
@@ -59,17 +56,18 @@ public class StartActivity extends Activity {
     }
 
     private void openQuitDialog (){
-        AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
-        quitDialog.setTitle("Are you really want to quit?");
 
-        quitDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(this);
+        quitDialog.setTitle(R.string.QuitDialog);
+
+        quitDialog.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
 
-        quitDialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        quitDialog.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 return;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Hit The Nail</string>
-    <string name="NewGameButton">New game</string>
+    <string name="NewGameButton">Новая игра</string>
     <string name="GenerateNewGame">Заново</string>
-    <string name="GoToMenu">на главную</string>
+    <string name="GoToMenu">На главную</string>
     <string name="ContinueButton">Статистика</string>
     <string name="easyLevel">Легко</string>
     <string name="mediumLevel">Нормально</string>
@@ -20,10 +20,10 @@
     <string name="HowToPlay">Как играть?</string>
     <string name="tutorial">Как играть</string>
     <string name="levelChoice">Сложность игры</string>
-    <string name="wonText">Вы выйгарли! За %1$s клика(ов).</string>
+    <string name="wonText">Вы выигарли! За %1$s клика(ов).</string>
     <string name="tutorialText">Всё что вам нужно сделать - забить все гвозди на игровом поле.
                                 \nНо в игре есть одно правило: когда вы ударяете по гвоздю, другие
-                                гвозди в той же строке и столбце меняют свою состояние на противоположное.
+                                гвозди в той же строке и столбце меняют своё состояние на противоположное.
     </string>
     <string name="instruction">Например:
                                 \nпопытайтесь забить гвозди так, чтобы только в одной строке и столбце
@@ -40,5 +40,12 @@
     <string name="follow">Подписывайся, приятель!</string>
     <string name="follow_button_back">Назад</string>
     <string name="follow_text">Ещё</string>
+    <string name="Exit">Выход</string>
+    <string name="ExitMessage">Больше не показывать мне это сообщение</string>
+    <string name="TryOther">Попробуйте наши приложения</string>
+    <string name="Close">Закрыть</string>
+    <string name="QuitDialog">Вы действительно хотите выйти?</string>
+    <string name="Yes">Да</string>
+    <string name="No">Нет</string>
 
 </resources>

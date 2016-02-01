@@ -41,7 +41,4 @@
             android:text="@string/follow_text"
             android:id="@+id/follow" android:layout_gravity="center_horizontal" style="@style/ButtonStyle"
             android:onClick="onClickOther" android:layout_marginBottom="10dp"/>
-    <Button style="@style/ButtonStyle" android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:text="@string/Exit" android:id="@+id/ExitButton" android:layout_gravity="center_horizontal"
-            android:onClick="exitClick" android:nestedScrollingEnabled="false"/>
 </LinearLayout>
