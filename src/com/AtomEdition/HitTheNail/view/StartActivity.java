@@ -98,6 +98,7 @@ public class StartActivity extends Activity {
     }
 
     public void onPromotionClick(View view) {
+
         PromotionButtonController promotionButtonController = PromotionButtonController.getInstance(this);
         promotionButtonController.makeUsFamous();
     }
