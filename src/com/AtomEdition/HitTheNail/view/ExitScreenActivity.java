@@ -24,15 +24,14 @@ public class ExitScreenActivity extends Activity implements View.OnClickListener
     private SharedPreferences.Editor editor;
     private PromotionService promotionService = PromotionService.getInstance();
 
-    private TableLayout tableLayout;
     private CheckBox checkBox;
     private ArrayList<Drawable> images;
     private int counter = 0;
     private static final String url[] = {
-            "https://play.google.com/store/apps/details?id=com.atomEdition.FortuneCookies",
             "https://play.google.com/store/apps/details?id=com.AtomEdition.CatClicker",
-            "https://play.google.com/store/apps/details?id=com.AtomEdition.MommyBalls",
-            "https://play.google.com/store/apps/details?id=com.atomEdition.mexicanAdopt"
+            "https://play.google.com/store/apps/details?id=com.atomEdition.FortuneCookies",
+            "https://play.google.com/store/apps/details?id=com.atomEdition.mexicanAdopt",
+            "https://play.google.com/store/apps/details?id=com.AtomEdition.MommyBalls"
     };
 
     @Override
@@ -41,7 +40,7 @@ public class ExitScreenActivity extends Activity implements View.OnClickListener
         setContentView(R.layout.exitscreen_layout);
         createImageTable();
 
-        tableLayout = (TableLayout)findViewById(R.id.appsTable);
+        //findViewById(R.id.appsTable);
         checkBox = (CheckBox)findViewById(R.id.MessageCheckBox);
 
         editor = getSharedPreferences(PromotionService.OTHER_APPS_SCREEN, Context.MODE_PRIVATE).edit();
@@ -54,10 +53,10 @@ public class ExitScreenActivity extends Activity implements View.OnClickListener
         double screenPercent = 0.6;
         TableLayout tableLayout = (TableLayout)findViewById(R.id.appsTable);
 
-        images.add(getResources().getDrawable(R.drawable.promotion_fortune_cookies));
-        images.add(getResources().getDrawable(R.drawable.promotion_cat_clicker));
-        images.add(getResources().getDrawable(R.drawable.promotion_mommy_balls));
-        images.add(getResources().getDrawable(R.drawable.promotion_adopt));
+        images.add(getResources().getDrawable(R.drawable.exit_menu_cat_clicker));
+        images.add(getResources().getDrawable(R.drawable.exit_menu_fortune_cookies));
+        images.add(getResources().getDrawable(R.drawable.exit_menu_adopt));
+        images.add(getResources().getDrawable(R.drawable.exit_menu_mommy_balls));
 
         float ratio = (float)images.get(0).getMinimumWidth()/images.get(0).getMinimumHeight();
         int bannerHeight = (int)(getResources().getDisplayMetrics().heightPixels*screenPercent)/images.size();

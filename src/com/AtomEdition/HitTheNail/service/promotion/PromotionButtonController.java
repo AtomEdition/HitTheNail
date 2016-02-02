@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 import com.AtomEdition.HitTheNail.R;
 
@@ -29,6 +30,8 @@ public class PromotionButtonController {
     private String[] urls = {URL_CAT_CLICKER, URL_FORTUNE_COOKIES, URL_ADOPT, URL_MOMMY_BALLS};
     private int[] imageIds = {R.drawable.promotion_cat_clicker, R.drawable.promotion_fortune_cookies,
             R.drawable.promotion_adopt, R.drawable.promotion_mommy_balls};
+    private int[] textIds = {R.drawable.promotion_text_cat_clicker, R.drawable.promotion_text_cookies,
+            R.drawable.promotion_text_adopt, R.drawable.promotion_text_mommy};
 
     public static PromotionButtonController getInstance(Activity activity){
         if (instance == null) {
@@ -62,6 +65,7 @@ public class PromotionButtonController {
     private void switchImage(int index){
         ImageButton imageButton = (ImageButton)currentActivity.findViewById(R.id.promotion_button);
         imageButton.setBackgroundResource(imageIds[index]);
+        imageButton.setImageResource(textIds[index]);
     }
 
     public void makeUsFamous(){
