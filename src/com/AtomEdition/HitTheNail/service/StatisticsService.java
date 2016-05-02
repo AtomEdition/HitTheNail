@@ -35,8 +35,8 @@ public class StatisticsService {
                 switch (gameDifficulty){
 
                     case "easy": if (stat.contains(EASY_CLICK_STAT)){
-                                        editor.putInt(EASY_CLICK_STAT, clickCount<stat.getInt(EASY_CLICK_STAT, 0)?
-                                                clickCount: stat.getInt(EASY_CLICK_STAT, 0));
+                        editor.putInt(EASY_CLICK_STAT, clickCount<stat.getInt(EASY_CLICK_STAT, 0)?
+                                clickCount: stat.getInt(EASY_CLICK_STAT, 0));
                     } else editor.putInt(EASY_CLICK_STAT, clickCount);
                         break;
 

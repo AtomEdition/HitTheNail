@@ -9,11 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
 import com.AtomEdition.HitTheNail.R;
-import com.AtomEdition.HitTheNail.service.AdService;
 import com.AtomEdition.HitTheNail.service.NailFieldService;
 import com.AtomEdition.HitTheNail.service.StatisticsService;
-
-//todo: �������� �����������
 
 public class GameActivity extends Activity implements View.OnClickListener {
 
@@ -66,31 +63,14 @@ public class GameActivity extends Activity implements View.OnClickListener {
         createField();
     }
 
-    protected void choiceLevelResult() {
+    private void choiceLevelResult() {
 
-        switch (getIntent().getStringExtra(LevelChoiceActivity.LEVEL)) {
+        String[] level = getIntent().getStringArrayExtra(LevelChoiceActivity.LEVEL);
+        int size = Integer.parseInt(level[1]);
 
-            case LevelChoiceActivity.EASY:
-                getNailFieldService().getNailField().setTableHeight(3);
-                getNailFieldService().getNailField().setTableWidth(3);
-                gameDifficulty = "easy";
-                break;
-
-            case LevelChoiceActivity.MEDIUM:
-                getNailFieldService().getNailField().setTableHeight(4);
-                getNailFieldService().getNailField().setTableWidth(4);
-                gameDifficulty = "medium";
-                break;
-
-            case LevelChoiceActivity.HARD:
-                getNailFieldService().getNailField().setTableHeight(5);
-                getNailFieldService().getNailField().setTableWidth(5);
-                gameDifficulty = "hard";
-                break;
-
-            default:
-                break;
-        }
+        getNailFieldService().getNailField().setTableHeight(size);
+        getNailFieldService().getNailField().setTableWidth(size);
+        gameDifficulty = level[0];
     }
 
     private void  createField() {
@@ -127,15 +107,14 @@ public class GameActivity extends Activity implements View.OnClickListener {
                 && isVisible;
 
         imageButton.setClickable(isClickable);
-        if (isClickable) {
 
+        if (isClickable) {
             imageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.okunhitnailshadow));
 
         } else if (isVisible) {
-
             imageButton.setBackgroundDrawable(getResources().getDrawable(R.drawable.okhitnail));
-        } else {
 
+        } else {
             imageButton.setVisibility(View.INVISIBLE);
         }
         return imageButton;
@@ -157,10 +136,9 @@ public class GameActivity extends Activity implements View.OnClickListener {
 
             winStatus = true;
             String text = getString(R.string.wonText);
-            //gameText.setText("You Won!" + " In " + Integer.toString(clickCounter) + " click.");
             gameText.setText(String.format(text, clickCounter));
-        } else {
 
+        } else {
             gameText.setText(Integer.toString(clickCounter));
         }
     }
@@ -178,9 +156,8 @@ public class GameActivity extends Activity implements View.OnClickListener {
         }
     }
 
-
     public void restartClick(View view){
-        statisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
+        statisticsService.setStat(statistics, editor, clickCounter, winStatus, gameDifficulty);
         gameText.setText("0");
         clickCounter = 0;
         winStatus = false;
@@ -207,12 +184,11 @@ public class GameActivity extends Activity implements View.OnClickListener {
         onBackPressed();
     }
 
-
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if (clickCounter > 0) {
-            statisticsService.setStat(statistics, editor, clickCounter, winStatus,gameDifficulty);
+            statisticsService.setStat(statistics, editor, clickCounter, winStatus, gameDifficulty);
         }
     }
 

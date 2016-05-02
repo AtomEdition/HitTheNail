@@ -10,11 +10,12 @@ import com.AtomEdition.HitTheNail.R;
 public class LevelChoiceActivity extends Activity {
 
     static final String LEVEL = "level";
-    static final String EASY = "easy";
-    static final String MEDIUM = "medium";
-    static final String HARD = "hard";
+    static final String[] EASY = {"easy", "3"};
+    static final String[] MEDIUM = {"medium", "4"};
+    static final String[] HARD = {"hard", "5"};
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levelchoice);
     }
@@ -24,7 +25,6 @@ public class LevelChoiceActivity extends Activity {
         Intent intent = new Intent(LevelChoiceActivity.this, GameActivity.class);
 
             switch (view.getId()){
-
                 case R.id.easy:
                     intent.putExtra(LEVEL, EASY);
                     break;
@@ -34,10 +34,8 @@ public class LevelChoiceActivity extends Activity {
                 case R.id.hard:
                     intent.putExtra(LEVEL, HARD);
                     break;
-
                 default: break;
             }
-
         startActivity(intent);
     }
 

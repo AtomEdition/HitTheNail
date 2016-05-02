@@ -3,7 +3,6 @@ package com.AtomEdition.HitTheNail.model;
 
 public class NailField {
 
-    //todo: сетить высоту и ширину исходя из размеров в GameActivity, получаемых из LevelChoice
     private int tableHeight;
     private int tableWidth;
 

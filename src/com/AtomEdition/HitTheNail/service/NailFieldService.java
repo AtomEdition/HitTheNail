@@ -27,23 +27,23 @@ public class NailFieldService {
         return instance;
     }
 
-    //todo: сделать генерацию без создания нулевого массива, чтобы ширина и высота задавалась в NailField при его создании
+
     public void generateNailField() {
 
-        height = getNailField().getTableHeight();
-        width = getNailField().getTableWidth();
+        height = nailField.getTableHeight();
+        width = nailField.getTableWidth();
 
         int rand;
 
-        setNailField(new NailField(height, width));
+        nailField = new NailField(height, width);
 
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++){
-               getNailField().getField()[i][j] = new Nail(true);
+                nailField.getField()[i][j] = new Nail(true);
             }
 
             rand = random.nextInt(width);
-            getNailField().getField()[i][rand].setVisibility(false);
+            nailField.getField()[i][rand].setVisibility(false);
         }
 
         confuseCreatedNailField();
@@ -67,8 +67,8 @@ public class NailFieldService {
                 randIntH = random.nextInt(height);
                 randIntW = random.nextInt(width);
 
-                if (getNailField().getField()[randIntH][randIntW].isPressed() &&
-                        getNailField().getField()[randIntH][randIntW].isVisibility()) {
+                if (nailField.getField()[randIntH][randIntW].isPressed() &&
+                        nailField.getField()[randIntH][randIntW].isVisibility()) {
                     changeFieldState(randIntH, randIntW);
                 }
             }
@@ -80,12 +80,12 @@ public class NailFieldService {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
 
-                getNailField().getTempField()[i][j] = new Nail(true);
+                nailField.getTempField()[i][j] = new Nail(true);
 
-                getNailField().getTempField()[i][j].setPressed(getNailField().getField()[i][j].isPressed());
+                nailField.getTempField()[i][j].setPressed(getNailField().getField()[i][j].isPressed());
 
-                if (!getNailField().getField()[i][j].isVisibility()) {
-                    getNailField().getTempField()[i][j].setVisibility(false);
+                if (!nailField.getField()[i][j].isVisibility()) {
+                    nailField.getTempField()[i][j].setVisibility(false);
                 }
             }
         }
@@ -96,19 +96,19 @@ public class NailFieldService {
 
         for (int i = 0; i < width; i++) {
 
-            if (getNailField().getField()[positionVertical][i].isVisibility()) {
-                getNailField().getField()[positionVertical][i].changeState();
+            if (nailField.getField()[positionVertical][i].isVisibility()) {
+                nailField.getField()[positionVertical][i].changeState();
             }
         }
 
         for (int j = 0; j < height; j++) {
 
-            if (getNailField().getField()[j][positionHorizontal].isVisibility()){
-                getNailField().getField()[j][positionHorizontal].changeState();
+            if (nailField.getField()[j][positionHorizontal].isVisibility()){
+                nailField.getField()[j][positionHorizontal].changeState();
             }
         }
 
-        getNailField().getField()[positionVertical][positionHorizontal].changeState();
+        nailField.getField()[positionVertical][positionHorizontal].changeState();
 
     }
 
@@ -116,10 +116,10 @@ public class NailFieldService {
         for (int i=0; i<height; i++){
             for (int j=0; j<width; j++){
 
-                getNailField().getField()[i][j].setPressed(getNailField().getTempField()[i][j].isPressed());
+                nailField.getField()[i][j].setPressed(getNailField().getTempField()[i][j].isPressed());
 
-                if (!getNailField().getTempField()[i][j].isVisibility()) {
-                    getNailField().getField()[i][j].setVisibility(false);
+                if (!nailField.getTempField()[i][j].isVisibility()) {
+                    nailField.getField()[i][j].setVisibility(false);
                 }
             }
         }
@@ -133,14 +133,14 @@ public class NailFieldService {
         for (int i = 0; i < height; i++){
             for (int j = 0; j < width; j++){
 
-                if (getNailField().getField()[i][j].isPressed() &&
-                        getNailField().getField()[i][j].isVisibility()){
+                if (nailField.getField()[i][j].isPressed() &&
+                        nailField.getField()[i][j].isVisibility()){
                     square--;
                 }
             }
         }
 
-        return square == 0;
+        return (square == 0);
     }
 
 
